@@ -1,0 +1,30 @@
+# Ignorar tudo na pasta src
+src/*
+
+# Exceto a pasta src (para aplicar exceções posteriormente)
+!src/
+
+# Exceto arquivos .py dentro de src
+!src/*.py
+
+# Exceto a pasta /utils e arquivos .py dentro dela
+!src/utils/
+!src/utils/*.py
+
+# Ignorar arquivos temporários ou irrelevantes
+*.tmp
+*.bak
+
+# Ignorar arquivos gerados por pyinstaller
+*.spec
+
+# Ignorar logs gerados por execuções, exceto se você quiser subir logs específicos
+*.log
+
+# Ignorar módulos compilados do Python
+__pycache__/
+*.pyc
+
+# Ignorar arquivos específicos em utils
+src/utils/__pycache__/
+src/utils/*.pyc
