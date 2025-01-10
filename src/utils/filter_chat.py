@@ -13,9 +13,9 @@ def filter_chat(input_file, output_file):
         if filtered_messages:
             with open(output_file, 'w', encoding='utf-8') as output:
                 output.writelines(filtered_messages)
-            print(f"Filtro concluído! Mensagens filtradas salvas em: {output_file}")
+            print(f"** Filtro concluído! Mensagens filtradas salvas em: {output_file} **\n")
         else:
-            print("Nenhuma mensagem encontrada que contenha as opções especificadas.")
+            print("** Nenhum log de batalha presente nesse arquivo. **\n")
 
     except FileNotFoundError:
         print(f"Erro: O arquivo '{input_file}' não foi encontrado.")
@@ -24,12 +24,15 @@ def filter_chat(input_file, output_file):
 
     return filtered_messages
 
-def view_files():
-    log_files = [f for f in os.listdir() if f.endswith('.log')]
-    for idx, file in enumerate(log_files): print(f"{idx}: {file}")
+def show_files():
+    log_files = [None] + [f for f in os.listdir() if f.endswith('.log')]
+    for idx, file in enumerate(log_files[1:], start=1): print(f"{idx}: {file}")
+    print()
+    print("0: Voltar ao Menu Principal\n")
     return log_files
 
-def select_files(log_files):
-    idx_file = int(input('Digite o indice do arquivo que deseja ver o relatório: '))
+def select_files(log_files, idx_file):
+    #idx_file = int(input('Digite o indice do arquivo que deseja ver o relatório: '))
     file = log_files[idx_file]
+    print()
     return file

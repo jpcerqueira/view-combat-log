@@ -1,41 +1,76 @@
 ##FUTURAS IMPLEMENTAÇÕES
 
 # SALVAR UM PNG COM O RELATÓRIO
-# FAZER UM LOOP PARA UM NO MENU
-# GERAR SEMPRE ARQUIVOS NOVOS, SEM SOBRESCREVER - COM A DATA DO LOG
-# DIRECIONAR PARA PASTA DO LOG, NÃO PRECISANDO MAIS COPIAR
+# DIRECIONAR PARA PASTA DO LOG, NÃO PRECISANDO MAIS COPIAR, USAR O tkinter PARA ISSO, SALVANDO NA PASTA LOGS E FAZER OUTRO MENU E OUTRA FUNÇÃO PARA OLHAR E SELECIONAR A PASTA DO DIA
 
 import os
 
-from utils.filter_chat import filter_chat, view_files, select_files
+from utils.filter_chat import filter_chat, show_files, select_files
 from utils.filter_dmg import filter_dmg
 from utils.report_dmg import report_dmg
-from utils.view_dmg import view_dmg
+#from utils.view_dmg import view_dmg
+from utils.menu import Menu
 
-log_files = view_files()
 
-file = select_files(log_files)
 
-os.system('cls')
+while True:
 
-input_file = file
-output_file = 'filtered_messages.txt'
-arquivo_resumo = 'resumo_danos.txt'
+    #Menu.menu_header()
 
-filtered_messages = filter_chat(input_file, output_file)
+    Menu.abrir_menu_principal()
 
-if filtered_messages:
+    select_menu = int(input())
 
-    filter_dmg(input_file)
+    os.system('cls')
 
-    damage_dealt, damage_taken = filter_dmg(input_file)
+    if select_menu == 1:
 
-    report_dmg(damage_dealt, damage_taken, arquivo_resumo)
+        while True:
+            Menu.menu_header()
 
-    view_dmg(damage_dealt, damage_taken)
+            log_files = show_files()
+
+            idx_file = int(input('Digite o indice do arquivo que deseja ver o relatório OU zero para voltar ao Menu Principal: '))
+
+
+            if idx_file == 0:
+                os.system('cls')
+                break
+
+            else:
+
+                file = select_files(log_files, idx_file)
+                input_file = file #talvez coloque dentro dos módulos
+                output_directory_file = 'Processed Messages'
+                os.makedirs(output_directory_file, exist_ok=True)
+                output_file = f'{output_directory_file}/filtered_messages_{input_file[:-4]}.txt'
+                output_directory_arquivo_resumo = 'Damage Reports'
+                os.makedirs(output_directory_arquivo_resumo, exist_ok=True)
+                arquivo_resumo = f'{output_directory_arquivo_resumo}/resumo_danos_{input_file[:-4]}.txt'
+                filtered_messages = filter_chat(input_file, output_file)
+        
+            input('Press ENTER to continue.')
+
+            os.system('cls')
+
+            if filtered_messages:
+
+                filter_dmg(input_file)
+
+                damage_dealt, damage_taken = filter_dmg(input_file)
+
+                report_dmg(damage_dealt, damage_taken, arquivo_resumo)
+
+                #view_dmg(damage_dealt, damage_taken)
+
+                #input('Press ENTER to exit.')
+
+    elif select_menu == 0:
+        break
+
 
 print()
 
-input('Press ENTER to exit.')
+
 
 os.system('cls')
