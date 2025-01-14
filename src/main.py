@@ -1,7 +1,4 @@
-##FUTURAS IMPLEMENTAÇÕES
-
-# SALVAR UM PNG COM O RELATÓRIO
-# DIRECIONAR PARA PASTA DO LOG, NÃO PRECISANDO MAIS COPIAR, USAR O tkinter PARA ISSO, SALVANDO NA PASTA LOGS E FAZER OUTRO MENU E OUTRA FUNÇÃO PARA OLHAR E SELECIONAR A PASTA DO DIA
+# IMPLEMENTAR OS KILLS, SOFRIDOS E APLICADOS
 
 import os
 
@@ -10,14 +7,30 @@ from utils.filter_dmg import filter_dmg
 from utils.report_dmg import report_dmg
 #from utils.view_dmg import view_dmg
 from utils.menu import Menu
+from config.manager import load_configuration, save_configuration
+from config.selector import select_folder
 
+
+
+
+config = load_configuration()
+
+if "log_path" in config:
+    print(f"Pasta dos logs: {config['log_path']}\n")
+
+else:
+    folder = select_folder()
+    if folder:
+        config["log_path"] = folder
+        save_configuration(config)
+        print(f"Pasta dos logs salva: {folder}")
 
 
 while True:
 
     #Menu.menu_header()
 
-    Menu.abrir_menu_principal()
+    Menu.open_main_menu()
 
     select_menu = int(input())
 
@@ -28,7 +41,7 @@ while True:
         while True:
             Menu.menu_header()
 
-            log_files = show_files()
+            log_files = show_files(config["log_path"])
 
             idx_file = int(input('Digite o indice do arquivo que deseja ver o relatório OU zero para voltar ao Menu Principal: '))
 
@@ -38,26 +51,26 @@ while True:
                 break
 
             else:
+                file = select_files(log_files, idx_file) #talvez coloque dentro dos módulos / ta horrivel
+                input_file = file 
 
-                file = select_files(log_files, idx_file)
-                input_file = file #talvez coloque dentro dos módulos
+                input_file_folder = config["log_path"] + "/" + file
+
                 output_directory_file = 'Processed Messages'
                 os.makedirs(output_directory_file, exist_ok=True)
                 output_file = f'{output_directory_file}/filtered_messages_{input_file[:-4]}.txt'
                 output_directory_arquivo_resumo = 'Damage Reports'
                 os.makedirs(output_directory_arquivo_resumo, exist_ok=True)
                 arquivo_resumo = f'{output_directory_arquivo_resumo}/resumo_danos_{input_file[:-4]}.txt'
-                filtered_messages = filter_chat(input_file, output_file)
+                filtered_messages = filter_chat(input_file_folder, output_file) #Teste input_file
         
-            input('Press ENTER to continue.')
-
-            os.system('cls')
+            
 
             if filtered_messages:
 
-                filter_dmg(input_file)
+                filter_dmg(input_file_folder) #Teste input_file
 
-                damage_dealt, damage_taken = filter_dmg(input_file)
+                damage_dealt, damage_taken = filter_dmg(input_file_folder) #Teste input_file
 
                 report_dmg(damage_dealt, damage_taken, arquivo_resumo)
 
@@ -65,12 +78,29 @@ while True:
 
                 #input('Press ENTER to exit.')
 
+            input('Press ENTER to continue.')
+
+            os.system('cls')
+
+    elif select_menu == 2:
+        Menu.open_menu_select_folder()
+        folder = config["log_path"]
+        print(f" >>> {folder[-10:]}\n")
+
+        folder = select_folder()
+
+        if folder:
+            config["log_path"] = folder
+            save_configuration(config)
+            print(f"Nova pasta dos logs salva: {folder}\n")
+
+        input('Press ENTER to exit.')
+
+        os.system('cls')
+
     elif select_menu == 0:
         break
 
-
 print()
-
-
 
 os.system('cls')

@@ -24,8 +24,8 @@ def filter_chat(input_file, output_file):
 
     return filtered_messages
 
-def show_files():
-    log_files = [None] + [f for f in os.listdir() if f.endswith('.log')]
+def show_files(directory_path):
+    log_files = [None] + [f for f in os.listdir(directory_path) if f.endswith('.log')]
     for idx, file in enumerate(log_files[1:], start=1): print(f"{idx}: {file}")
     print()
     print("0: Voltar ao Menu Principal\n")
