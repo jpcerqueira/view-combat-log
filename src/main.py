@@ -4,6 +4,7 @@ import os
 
 from utils.filter_chat import filter_chat, show_files, select_files
 from utils.filter_dmg import filter_dmg
+from utils.filter_kill import filter_kill
 from utils.report_dmg import report_dmg
 #from utils.view_dmg import view_dmg
 from utils.menu import Menu
@@ -59,20 +60,24 @@ while True:
                 output_directory_file = 'Processed Messages'
                 os.makedirs(output_directory_file, exist_ok=True)
                 output_file = f'{output_directory_file}/filtered_messages_{input_file[:-4]}.txt'
+
                 output_directory_arquivo_resumo = 'Damage Reports'
                 os.makedirs(output_directory_arquivo_resumo, exist_ok=True)
                 arquivo_resumo = f'{output_directory_arquivo_resumo}/resumo_danos_{input_file[:-4]}.txt'
+                
                 filtered_messages = filter_chat(input_file_folder, output_file) #Teste input_file
         
             
 
             if filtered_messages:
 
-                filter_dmg(input_file_folder) #Teste input_file
+                #filter_dmg(input_file_folder) #Teste input_file
 
-                damage_dealt, damage_taken = filter_dmg(input_file_folder) #Teste input_file
+                dead_list = filter_kill(input_file_folder)
 
-                report_dmg(damage_dealt, damage_taken, arquivo_resumo)
+                damage_dealt, damage_taken, total_damage_dealt, total_damage_taken = filter_dmg(input_file_folder) #Teste input_file
+
+                report_dmg(damage_dealt, damage_taken, total_damage_dealt, total_damage_taken, dead_list, arquivo_resumo)
 
                 #view_dmg(damage_dealt, damage_taken)
 
