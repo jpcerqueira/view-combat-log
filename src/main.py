@@ -1,12 +1,9 @@
-# IMPLEMENTAR OS KILLS, SOFRIDOS E APLICADOS
-
 import os
 
 from utils.filter_chat import filter_chat, show_files, select_files
 from utils.filter_dmg import filter_dmg
 from utils.filter_kill import filter_kill
 from utils.report_dmg import report_dmg
-#from utils.view_dmg import view_dmg
 from utils.menu import Menu
 from config.manager import load_configuration, save_configuration
 from config.selector import select_folder
@@ -28,8 +25,6 @@ else:
 
 
 while True:
-
-    #Menu.menu_header()
 
     Menu.open_main_menu()
 
@@ -65,23 +60,17 @@ while True:
                 os.makedirs(output_directory_arquivo_resumo, exist_ok=True)
                 arquivo_resumo = f'{output_directory_arquivo_resumo}/resumo_danos_{input_file[:-4]}.txt'
                 
-                filtered_messages = filter_chat(input_file_folder, output_file) #Teste input_file
+                filtered_messages = filter_chat(input_file_folder, output_file)
         
             
 
             if filtered_messages:
 
-                #filter_dmg(input_file_folder) #Teste input_file
+                dead_list, dead_count = filter_kill(input_file_folder)
 
-                dead_list = filter_kill(input_file_folder)
+                damage_dealt, damage_taken, total_damage_dealt, total_damage_taken = filter_dmg(input_file_folder)
 
-                damage_dealt, damage_taken, total_damage_dealt, total_damage_taken = filter_dmg(input_file_folder) #Teste input_file
-
-                report_dmg(damage_dealt, damage_taken, total_damage_dealt, total_damage_taken, dead_list, arquivo_resumo)
-
-                #view_dmg(damage_dealt, damage_taken)
-
-                #input('Press ENTER to exit.')
+                report_dmg(damage_dealt, damage_taken, total_damage_dealt, total_damage_taken, dead_list, dead_count, arquivo_resumo)
 
             input('Press ENTER to continue.')
 

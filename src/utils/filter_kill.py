@@ -6,15 +6,15 @@ def filter_kill(input_file):
         with open(input_file, "r", encoding="utf-8") as input:
             lines = input.readlines()
 
-        dead_list = [] #criar um dic, onde será adicionado a qtd de vezes que o nick apareceu
-        #dead_list = defaultdict(lambda: defaultdict(int))
+        dead_list = {}
+        dead_count:int = 0
 
         for line in lines:
-            if "You have killed" in line:
-                match = re.search(r"You have killed (\S+)", line) #quebra de linha
+            match = re.search(r"You have killed (\S+)", line)
+            if match:
                 dead_target = match.group(1)
-                if dead_target not in dead_list:
-                    dead_list.append(dead_target)
+                dead_count += 1
+                dead_list[dead_target] = dead_list.get(dead_target, 0) + 1
 
     except FileNotFoundError:
         print(f'Erro: O arquivo "{input_file}" não foi encontrado.')
@@ -22,4 +22,4 @@ def filter_kill(input_file):
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
 
-    return dead_list
+    return dead_list, dead_count

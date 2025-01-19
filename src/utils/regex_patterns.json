@@ -1,0 +1,18 @@
+[
+    {
+        "regex": "You have hit <spush><color:C65F5F>(.*?)<spop> in <spush><color:C65F5F>(.*?)<spop> for <spush><color:C65F5F>(\\d+\\.\\d+)<spop> of <spush><color:C65F5F>(.*?)<spop> damage",
+        "action": "damage_dealt"
+    },
+    {
+        "regex": "<spush><color:C65F5F>(.*?)<spop> has hit you in <spush><color:C65F5F>(.*?)<spop> for <spush><color:C65F5F>(\\d+\\.\\d+)<spop> of <spush><color:C65F5F>(.*?)<spop> damage",
+        "action": "damage_taken"
+    },
+    {
+        "regex": "Você atingiu <spush><color:C65F5F>(.*?)<spop> em <spush><color:C65F5F>(.*?)<spop> para <spush><color:C65F5F>(\\d+\\.\\d+)<spop> de <spush><color:C65F5F>(.*?)<spop> de dano",
+        "action": "damage_dealt"
+    },
+    {
+        "regex": "<spush><color:C65F5F>(.*?)<spop> atingiu você em <spush><color:C65F5F>(.*?)<spop> para <spush><color:C65F5F>(\\d+\\.\\d+)<spop> de <spush><color:C65F5F>(.*?)<spop> de dano",
+        "action": "damage_taken"
+    }
+]

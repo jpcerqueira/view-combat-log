@@ -7,9 +7,12 @@ src/*
 # Exceto arquivos .py dentro de src
 !src/*.py
 
-# Exceto a pasta /utils e arquivos .py dentro dela
+# Exceto a pasta /utils e /config e arquivos .py e .json dentro dela
 !src/utils/
 !src/utils/*.py
+!src/utils/*.json
+!src/config
+!src/config/*.py
 
 # Ignorar arquivos temporários ou irrelevantes
 *.tmp
@@ -28,3 +31,5 @@ __pycache__/
 # Ignorar arquivos específicos em utils
 src/utils/__pycache__/
 src/utils/*.pyc
+src/config/__pycache__/
+src/config/*.pyc
