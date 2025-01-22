@@ -4,25 +4,38 @@ from utils.filter_chat import filter_chat, show_files, select_files
 from utils.filter_dmg import filter_dmg
 from utils.filter_kill import filter_kill
 from utils.report_dmg import report_dmg
-from utils.menu import Menu
 from config.manager import load_configuration, save_configuration
 from config.selector import select_folder
+from utils.translator import get_translation
+from utils.menu import Menu
 
-
-
+def get_current_language():
+        config = load_configuration()
+        current_language = config["current_language"]
+        return current_language
 
 config = load_configuration()
 
+
+if "current_language" in config:
+    current_language = config["current_language"]
+
+else:
+    config["current_language"] = "pt"
+    save_configuration(config)
+    current_language = get_current_language()
+
+
+
 if "log_path" in config:
-    print(f"Pasta dos logs: {config['log_path']}\n")
+    print(get_translation(current_language, "main.log_path_1", config=config)) #msg do erro
 
 else:
     folder = select_folder()
     if folder:
         config["log_path"] = folder
         save_configuration(config)
-        print(f"Pasta dos logs salva: {folder}")
-
+        print(get_translation(current_language, "main.log_path_2", folder=folder))
 
 while True:
 
@@ -39,7 +52,7 @@ while True:
 
             log_files = show_files(config["log_path"])
 
-            idx_file = int(input('Digite o indice do arquivo que deseja ver o relatório OU zero para voltar ao Menu Principal: '))
+            idx_file = int(input(get_translation(current_language, "main.idex_file")))
 
 
             if idx_file == 0:
@@ -72,7 +85,7 @@ while True:
 
                 report_dmg(damage_dealt, damage_taken, total_damage_dealt, total_damage_taken, dead_list, dead_count, arquivo_resumo)
 
-            input('Press ENTER to continue.')
+            input(get_translation(current_language, "main.press_enter"))
 
             os.system('cls')
 
@@ -86,10 +99,25 @@ while True:
         if folder:
             config["log_path"] = folder
             save_configuration(config)
-            print(f"Nova pasta dos logs salva: {folder}\n")
+            print(get_translation(current_language, "main.folder_save", folder=folder))
 
-        input('Press ENTER to exit.')
+        input(get_translation(current_language, "main.press_enter"))
+        os.system('cls')
 
+    elif select_menu == 3:
+        Menu.open_language_selection_menu()
+
+        language_selection = int(input())
+        if language_selection == 1:
+            current_language = "pt" 
+        elif language_selection == 2:
+            current_language = "en"
+        elif language_selection == 3:
+            current_language = "es"
+        config["current_language"] = current_language
+        save_configuration(config)
+        
+        input(get_translation(current_language, "main.press_enter"))
         os.system('cls')
 
     elif select_menu == 0:

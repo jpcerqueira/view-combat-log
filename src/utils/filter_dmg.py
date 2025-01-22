@@ -3,6 +3,13 @@ import os
 import sys
 import json
 from collections import defaultdict
+from utils.translator import get_translation
+from config.manager import load_configuration
+
+def get_current_language():
+        config = load_configuration()
+        current_language = config["current_language"]
+        return current_language
 
 def load_patterns():
     # Localiza o diretório base onde o executável está rodando
@@ -19,6 +26,7 @@ def load_patterns():
         return json.load(f)
 
 def filter_dmg(input_file):
+    current_language = get_current_language()
     try:
         patterns = load_patterns()
 
@@ -50,8 +58,8 @@ def filter_dmg(input_file):
                     break
 
     except FileNotFoundError:
-        print(f"Erro: O arquivo '{input_file}' não foi encontrado.")
+        print(get_translation(current_language, "filter_dmg.fileNotFoundError", input_file=input_file))
     except Exception as e:
-        print(f"Ocorreu um erro: {e}")
+        print(get_translation(current_language, "filter_dmg.exception", e=e))
 
     return damage_dealt, damage_taken, total_damage_dealt, total_damage_taken

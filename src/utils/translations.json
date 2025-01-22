@@ -1,0 +1,160 @@
+{
+    "pt": {
+        "menu": {
+            "menu_header": "       LOG'S DE BATALHA       ",
+            "main_menu": "x==== Menu Principal ====x\n",
+            "option_1": " 1. Acessar log's",
+            "option_2": " 2. Mudar diretório",
+            "option_3": " 3. Mudar linguagem",
+            "option_0": " 0. Sair\n",
+            "prompt": "Selecione uma opção:",
+            "select_folder": "x==== Pasta Atual Selecionada ====x\n",
+            "select_language": "x==== Selecione uma linguagem ====x\n",
+            "option_language_1":" 1. Português",
+            "option_language_2":" 2. Inglês",
+            "option_language_3":" 3. Espanhol",
+            "option_language_0":" 0. Voltar ao Menu anterior.\n"
+        },
+        "main":{
+            "log_path_1": "Pasta dos logs: {config['log_path']}\n",
+            "log_path_2": "Pasta dos logs salva: {folder}",
+            "idex_file": "Digite o indice do arquivo que deseja ver o relatório OU zero para voltar ao Menu Principal: ",
+            "press_enter": "Pressione ENTER para continuar.",
+            "folder_save": "Nova pasta dos logs salva: {folder}\n"
+        },
+        "selector":{
+            "title": "Selecione a pasta dos log's"
+        },
+        "filter_chat":{
+            "filter_1": "** Filtro concluído! Mensagens filtradas salvas em: {output_file} **\n",
+            "filter_2": "** Nenhum log de batalha presente nesse arquivo. **\n",
+            "fileNotFoundError": "Erro: O arquivo '{input_file}' não foi encontrado.",
+            "exception": "Ocorreu um erro: {e}",
+            "show_files": "0: Voltar ao Menu Principal\n"
+        },
+        "filter_dmg":{
+            "fileNotFoundError": "Erro: O arquivo '{input_file}' não foi encontrado.",
+            "exception": "Ocorreu um erro: {e}"
+        },
+        "filter_kill":{
+            "fileNotFoundError": "Erro: O arquivo '{input_file}' não foi encontrado.",
+            "exception": "Ocorreu um erro: {e}"
+        },
+        "report_dmg":{
+            "dmg_dealt": "Danos causados:\n",
+            "total_dmg_dealt_target": ">> Dano total em {target} = {total_target:.2f} <<\n",
+            "total_dmg_dealt": "TOTAL DE DANOS CAUSADOS: {total_damage_dealt:.2f}\n",
+            "kill_list": "Lista de kills:\n",
+            "total_kill": "Total de kill {dead_count}\n",
+            "dmg_taken": "Danos sofridos:\n",
+            "total_dmg_taken_target": ">> Dano total em {target} = {total_target:.2f} <<\n",
+            "total_dmg_taken": "TOTAL DE DANOS SOFRIDOS: {total_damage_taken:.2f}\n"
+        }
+    },
+
+    "en": {
+        "menu": {
+            "menu_header": "       BATTLE LOGS       ",
+            "main_menu": "x==== Main Menu ====x\n",
+            "option_1": " 1. Access logs",
+            "option_2": " 2. Change directory",
+            "option_3": " 3. Change language",
+            "option_0": " 0. Exit\n",
+            "prompt": "Select an option:",
+            "select_folder": "x==== Current Selected Folder ====x\n",
+            "select_language": "x==== Select a language ====x\n",
+            "option_language_1": " 1. Portuguese",
+            "option_language_2": " 2. English",
+            "option_language_3": " 3. Spanish",
+            "option_language_0": " 0. Back to the previous menu.\n"
+        },
+        "main": {
+            "log_path_1": "Log folder: {config['log_path']}\n",
+            "log_path_2": "Saved log folder: {folder}",
+            "idex_file": "Enter the index of the file you want to view the report for OR zero to return to the Main Menu: ",
+            "press_enter": "Press ENTER to continue.",
+            "folder_save": "New log folder saved: {folder}\n"
+        },
+        "selector": {
+            "title": "Select the log folder"
+        },
+        "filter_chat": {
+            "filter_1": "** Filter completed! Filtered messages saved in: {output_file} **\n",
+            "filter_2": "** No battle log present in this file. **\n",
+            "fileNotFoundError": "Error: The file '{input_file}' was not found.",
+            "exception": "An error occurred: {e}",
+            "show_files": "0: Return to the Main Menu\n"
+        },
+        "filter_dmg": {
+            "fileNotFoundError": "Error: The file '{input_file}' was not found.",
+            "exception": "An error occurred: {e}"
+        },
+        "filter_kill": {
+            "fileNotFoundError": "Error: The file '{input_file}' was not found.",
+            "exception": "An error occurred: {e}"
+        },
+        "report_dmg": {
+            "dmg_dealt": "Damage dealt:\n",
+            "total_dmg_dealt_target": ">> Total damage to {target} = {total_target:.2f} <<\n",
+            "total_dmg_dealt": "TOTAL DAMAGE DEALT: {total_damage_dealt:.2f}\n",
+            "kill_list": "Kill list:\n",
+            "total_kill": "Total kills {dead_count}\n",
+            "dmg_taken": "Damage taken:\n",
+            "total_dmg_taken_target": ">> Total damage to {target} = {total_target:.2f} <<\n",
+            "total_dmg_taken": "TOTAL DAMAGE TAKEN: {total_damage_taken:.2f}\n"
+        }
+    },
+
+    "es": {
+        "menu": {
+            "menu_header": "       REGISTROS DE BATALLA       ",
+            "main_menu": "x==== Menú Principal ====x\n",
+            "option_1": " 1. Acceder a registros",
+            "option_2": " 2. Cambiar directorio",
+            "option_3": " 3. Cambiar idioma",
+            "option_0": " 0. Salir\n",
+            "prompt": "Seleccione una opción:",
+            "select_folder": "x==== Carpeta Seleccionada Actual ====x\n",
+            "select_language": "x==== Seleccione un idioma ====x\n",
+            "option_language_1": " 1. Portugués",
+            "option_language_2": " 2. Inglés",
+            "option_language_3": " 3. Español",
+            "option_language_0": " 0. Volver al menú anterior.\n"
+        },
+        "main": {
+            "log_path_1": "Carpeta de registros: {config['log_path']}\n",
+            "log_path_2": "Carpeta de registros guardada: {folder}",
+            "idex_file": "Ingrese el índice del archivo que desea ver en el informe O cero para volver al Menú Principal: ",
+            "press_enter": "Presione ENTER para continuar.",
+            "folder_save": "Nueva carpeta de registros guardada: {folder}\n"
+        },
+        "selector": {
+            "title": "Seleccione la carpeta de registros"
+        },
+        "filter_chat": {
+            "filter_1": "** ¡Filtro completado! Mensajes filtrados guardados en: {output_file} **\n",
+            "filter_2": "** No hay registros de batalla presentes en este archivo. **\n",
+            "fileNotFoundError": "Error: El archivo '{input_file}' no fue encontrado.",
+            "exception": "Ocurrió un error: {e}",
+            "show_files": "0: Volver al Menú Principal\n"
+        },
+        "filter_dmg": {
+            "fileNotFoundError": "Error: El archivo '{input_file}' no fue encontrado.",
+            "exception": "Ocurrió un error: {e}"
+        },
+        "filter_kill": {
+            "fileNotFoundError": "Error: El archivo '{input_file}' no fue encontrado.",
+            "exception": "Ocurrió un error: {e}"
+        },
+        "report_dmg": {
+            "dmg_dealt": "Daño causado:\n",
+            "total_dmg_dealt_target": ">> Daño total a {target} = {total_target:.2f} <<\n",
+            "total_dmg_dealt": "DAÑO TOTAL CAUSADO: {total_damage_dealt:.2f}\n",
+            "kill_list": "Lista de eliminaciones:\n",
+            "total_kill": "Total de eliminaciones {dead_count}\n",
+            "dmg_taken": "Daño recibido:\n",
+            "total_dmg_taken_target": ">> Daño total a {target} = {total_target:.2f} <<\n",
+            "total_dmg_taken": "DAÑO TOTAL RECIBIDO: {total_damage_taken:.2f}\n"
+        }
+    }        
+}
